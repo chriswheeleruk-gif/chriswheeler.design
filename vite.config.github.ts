@@ -1,0 +1,22 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import path from 'node:path'
+
+// Vite config for GitHub Pages deployment — strips Figma-specific plugins.
+export default defineConfig({
+  base: process.env.VITE_BASE ?? '/',
+  build: {
+    sourcemap: false,
+    minify: true,
+  },
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+})
