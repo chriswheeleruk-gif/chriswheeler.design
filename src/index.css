@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --background: #F7F6F2;
+  --foreground: #141412;
+  --card: #F0EFE9;
+  --card-foreground: #141412;
+  --primary: #141412;
+  --primary-foreground: #F7F6F2;
+  --secondary: #ECEAE3;
+  --secondary-foreground: #141412;
+  --muted: #E8E6DF;
+  --muted-foreground: #6B6A65;
+  --accent: #8B7355;
+  --accent-foreground: #F7F6F2;
+  --border: rgba(20, 20, 18, 0.1);
+  --border-strong: rgba(20, 20, 18, 0.2);
+  --ring: #8B7355;
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --radius: var(--radius);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'Spectral', Georgia, serif;
+}
+
+.font-mono-label {
+  font-family: 'DM Mono', monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 0px; }
+* { scrollbar-width: none; }
+
+/* Link base */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Hairline rule */
+.rule {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.rule-strong {
+  border: none;
+  border-top: 1px solid var(--border-strong);
+}
+
+/* Nav underline animation */
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--foreground);
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Hover accent */
+.accent-link {
+  transition: color 0.2s ease;
+}
+.accent-link:hover {
+  color: var(--accent);
+}
+
+/* Fade-up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* Diagram lines */
+.diagram-line {
+  stroke: var(--foreground);
+  stroke-width: 1;
+  fill: none;
+  opacity: 0.25;
+}
+
+/* Page transition */
+.page-enter {
+  animation: fadeUp 0.4s ease forwards;
+}
